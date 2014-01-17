@@ -1,0 +1,1 @@
+D:\WT-NMP\bin\php-5.5.5\php.exe E:\dev\github\php-sensor\lib\horsebean\register.php 

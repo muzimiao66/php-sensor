@@ -1,0 +1,21 @@
+{
+  "name": "php-sensor",
+  "version": "0.1.0",
+  "homepage": "https://github.com/horsebean/php-sensor",
+  "authors": [
+    "周培公 <peigong@foxmail.com>"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "horsebean-api": "~0.1.0",
+    "horsebean-service": "~0.1.0"
+  },
+  "ignore": [
+    "**/.*",
+    "composer.phar",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
