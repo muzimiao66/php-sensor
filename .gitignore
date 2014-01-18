@@ -1,2 +1,3 @@
+lib/horsebean/vendor
 lib/horsebean/composer.lock
 lib/horsebean/bin/composer.phar
