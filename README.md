@@ -26,3 +26,20 @@
 - lib/horsebean/register.php			：	注册监视服务。
 
 ## 项目依赖 ##
+
+### 安装Composer ###
+
+1. 检查环境变量，将PHP的安装路径添加到系统目录环境变量。
+2. 检查php.ini配置文件，使用`;`注释掉`open_basedir`、`disable_functions`、`disable_classes`三个配置。
+3. 在当前目录下，创建bin目录。
+4. 在命令行中执行`curl -sS https://getcomposer.org/installer | php -- --install-dir=bin`。
+
+### 安装项目依赖 ###
+
+在命令行中执行如下命令，安装配置文件composer.json定义的项目依赖：
+
+	php bin/composer.phar install
+
+### 清理冗余文件 ###
+
+`bin/composer.phar`和`composer.lock`是冗余文件，在版本控制系统中忽略掉较好。

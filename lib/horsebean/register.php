@@ -1,17 +1,21 @@
 ﻿#!/usr/bin/php
 <?php
-define('ROOT', str_replace('\\', '/', dirname(__FILE__)) . '/');
+require_once 'vendor/autoload.php';
 
 /**
 * 向监视服务注册应用。
 */
 function register($config){
-    $service = $config["service"]["uri"];
+    $uri = $config["service"]["uri"];
     $version = $config["service"]["version"];
     unset($config["service"]);
+
+    $client = new Guzzle\Http\Client();
+    $client->post($uri, array(), $config);
+    print_r($uri);
     print_r($config);
 }
-include ROOT . "conf.php";
+require_once "conf.php";
 $config = get_horsebean_sensor_config();
 register($config);
 /*
