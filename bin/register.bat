@@ -1,1 +1,1 @@
-php E:\dev\github\php-sensor\lib\horsebean\register.php 
+php ..\lib\horsebean\register.php sensor.conf.php

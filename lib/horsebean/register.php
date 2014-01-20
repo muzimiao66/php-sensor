@@ -1,29 +1,49 @@
 ﻿#!/usr/bin/php
 <?php
+require_once 'horsebean.conf.php';
 require_once 'vendor/autoload.php';
 
-/**
-* 向监视服务注册应用。
-*/
-function register($config){
-    $uri = $config["service"]["uri"];
-    $version = $config["service"]["version"];
-    unset($config["service"]);
+require_once HORSEBEAN_ROOT . 'lib/sensors/SensorFactory.php';
 
-    $client = new Guzzle\Http\Client();
-    $client->post($uri, array(), $config);
-    print_r($uri);
-    print_r($config);
+use CHH\Optparse;
+
+$parser = new Optparse\Parser("Registered Monitoring Service.");
+
+function usage_and_exit()
+{
+    global $parser;
+    fwrite(STDERR, "{$parser->usage()}\n");
+    exit(1);
 }
-require_once "conf.php";
-$config = get_horsebean_sensor_config();
-register($config);
-/*
-if (1 == $argc || in_array($argv[1], array('--help', '-help', '-h', '-?'))) {
-   print_r("usage: {\$PHP_PATH}/php {\$horsebean}/register.php [-c ./conf.php]\n");
-   print_r("option:\n");
-   print_r("--help or -help or -h or -?\t\tshow horsebean php-sensor info.\n");
-   print_r("--config or -config or -c config-path\tset horsebean php-sensor config file.\n");
-} elseif($argc > 1 && in_array($argv[1], array('--config', '-config', '-c'))) {
-}*/
+
+$parser->addArgument("config", array("required" => true));
+$parser->addFlag("help", array("alias" => "-h"), "usage_and_exit");
+$parser->addFlag("version", array("alias" => "-v"));
+
+
+try {
+    $parser->parse();
+
+    if ($parser["help"]) {
+        echo $parser->usage();
+        exit;
+    }
+
+    if ($parser["version"]) {
+        echo "0.1.0";
+        exit;
+    }
+
+    $config = $parser["config"];
+    if ($config) {
+        require_once $config;
+        $config = get_horsebean_sensor_config();
+
+        $sensor = horsebean\sensors\SensorFactory::createSensor();
+        $sensor->register($config);
+        exit;
+    }
+} catch (Optparse\Exception $e) {
+    usage_and_exit();
+}
 ?>

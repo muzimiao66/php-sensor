@@ -1,11 +1,11 @@
-﻿<?php
-require_once "HorsebeanSensor.php";
+<?php
+require_once 'horsebean.conf.php';
+require_once HORSEBEAN_ROOT . 'lib/sensors/SensorFactory.php';
+require_once HORSEBEAN_ROOT . 'CustomHull.php';
 
-$sensor = Horsebean\Factory::createSensor();
-
-/*参照如下范例代码依次添加监视指标*/
-$sensor->add('run', 1);
+$sensor = \horsebean\sensors\SensorFactory::createSensor();
+$hull = new \horsebean\CustomHull($sensor);
 
 /*报告监视数据*/
-echo $sensor->toJSON();
+echo $hull->toJSON();
 ?>

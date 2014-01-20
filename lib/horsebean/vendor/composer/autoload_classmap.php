@@ -6,4 +6,10 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'CHH\\Optparse\\Argument' => $vendorDir . '/chh/optparse/lib/CHH/Optparse.php',
+    'CHH\\Optparse\\ArgumentException' => $vendorDir . '/chh/optparse/lib/CHH/Optparse.php',
+    'CHH\\Optparse\\Exception' => $vendorDir . '/chh/optparse/lib/CHH/Optparse.php',
+    'CHH\\Optparse\\Flag' => $vendorDir . '/chh/optparse/lib/CHH/Optparse.php',
+    'CHH\\Optparse\\ParseException' => $vendorDir . '/chh/optparse/lib/CHH/Optparse.php',
+    'CHH\\Optparse\\Parser' => $vendorDir . '/chh/optparse/lib/CHH/Optparse.php',
 );

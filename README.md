@@ -1,5 +1,9 @@
 # 运维监控系统传感器（PHP版本） #
 
+## 环境依赖 ##
+
+本系统需要运行在`>5.3`版本PHP的环境中。
+
 ## 遵循的规范 ##
 
 当前实现遵循[运维监控系统API](https://github.com/horsebean/api)的被动传感器规范。
@@ -13,17 +17,29 @@
 ## 使用方法 ##
 
 1. 将lib下的horsebean复制到网站根目录下。
-2. 将conf.php.sample复制为conf.php，把配置修改为当前PHP应用的信息。
-3. 将sensor.php.sample复制为sensor.php，PHP应用的开发者负责在此收集本系统的监视数据。
+2. 修改sensor.conf.php，配置当前PHP应用的信息。
+3. 修改CustomHull.php，收集本系统的监视数据。
 4. 在PHP应用启动时，执行如下命令注册监视服务：
-	{$PHP_PATH}/php {$horsebean}/register.php [-c ./conf.php]
+	php register.php sensor.conf.php
 
 ## 目录结构 ##
 
-- lib/horsebean/HorsebeanSensor.class.php	：	运维监控系统传感器类（PHP版本）。
-- lib/horsebean/conf.php.sample		:	业务系统的配置样例。
-- lib/horsebean/sensor.php.sample	：	运维监控系统传感器（PHP版本）。
+### 开发者关注 ###
+
+- lib/horsebean/sensor.conf.php	：	需要配置的应用信息。
+- lib/horsebean/CustomHull.php	：	需要应用开发者自定义数据收集功能的外壳。
+- lib/horsebean/samples/			：	供开发者参考的范例。
+
+### 内部实现 ###
+
+- lib/horsebean/sensor.php			：	负责被动监视实现的传感器。
 - lib/horsebean/register.php			：	注册监视服务。
+- lib/horsebean/composer.json		：	PHP模块依赖的配置文件。
+- lib/horsebean/horsebean.conf.php	：	系统内部配置文件。
+- lib/horsebean/bin/		辅助的可执行程序目录。
+- lib/horsebean/lib/		系统内部实现库目录。
+- lib/horsebean/vendor/	依赖的PHP模块目录。
+
 
 ## 项目依赖 ##
 

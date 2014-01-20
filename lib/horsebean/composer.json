@@ -1,5 +1,6 @@
 {
     "require": {
+        "chh/optparse": "*@dev",
         "guzzle/guzzle": "~3.7.0"
     }
 }
