@@ -24,7 +24,7 @@ function get_horsebean_sensor_config(){
         /*被动监视的传感器URL地址*/
         "sensor" => "http://127.0.0.1:8080/horsebean/sensor.php",
         /*监视服务的注册URL地址*/
-        "service" => array("uri" => "http://127.0.0.1:3333/svr/register", "version" => "0.1.0")
+        "service" => array("uri" => "http://127.0.0.1:4444/svr/register", "version" => "0.1.0")
     );
 }
 ?>
