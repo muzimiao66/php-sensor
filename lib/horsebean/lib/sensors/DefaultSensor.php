@@ -28,9 +28,14 @@ class DefaultSensor implements \horsebean\iSensor
         unset($config["service"]);
 
         $client = new \Guzzle\Http\Client();
-        $client->post($uri, array(), $config);
+        $request = $client->post($uri, array(), $config);
+        $response = $request->send();
+        print_r('uri:');
         print_r($uri);
+        print_r('config:');
         print_r($config);
+        print_r('body:');
+        print_r($response->getBody());
     }
 
     /**
